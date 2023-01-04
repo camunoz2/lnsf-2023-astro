@@ -6,12 +6,10 @@ module.exports = {
       backgroundColor: {
         "lnsf-yellow": "#FFD059",
         "lnsf-blue": "#0266FF",
-        "lnsf-black": "#282828",
       },
       colors: {
         "lnsf-yellow": "#FFD059",
         "lnsf-blue": "#0266FF",
-        "lnsf-black": "#282828",
       },
     },
   },

@@ -1,14 +1,46 @@
-<div class="hidden md:block container mx-auto px-4 py-6">
-  <div class="flex justify-between">
-    <h2>Logo</h2>
+---
+import { Image } from "@astrojs/image/components";
+import logo from "../images/logo.png";
+
+export interface Menu {
+  title: string;
+  link: string;
+  selected?: boolean;
+  submenu?: Menu[];
+}
+
+export interface Props {
+  menuItems: Menu[];
+}
+
+const { menuItems } = Astro.props;
+---
+
+<div class="container mx-auto px-4 py-6">
+  <div class="hidden md:flex justify-between items-center">
+    <div class="flex gap-4 items-center">
+      <Image width={65} height={66} src={logo} alt="logo lnsf" />
+      <div class="flex flex-col">
+        <p class="font-bold">Liceo Bicentenario</p>
+        <p>Nibaldo Sepulveda Fernández</p>
+      </div>
+    </div>
+
     <nav>
-      <ul class="flex gap-2">
-        <li>Inicio</li>
-        <li>Sobre Nosotros</li>
-        <li>Equipo</li>
-        <li>Cursos</li>
-        <li>Radio Online</li>
-        <li>Noticias</li>
+      <ul class="flex gap-2 text-gray-400">
+        {
+          menuItems.map((item) => (
+            <li
+              class={
+                item.selected
+                  ? "text-lnsf-blue font-bold cursor-pointer"
+                  : "cursor-pointer hover:text-lnsf-blue"
+              }
+            >
+              {item.title}
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </div>
