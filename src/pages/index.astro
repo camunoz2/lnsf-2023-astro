@@ -1,5 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import GradientText from "../components/GradientText.astro";
 ---
 
-<Layout title="Liceo Nibaldo Sepúlveda Fernández" />
+<Layout title="Liceo Nibaldo Sepúlveda Fernández">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-2">
+      <!-- Text title -->
+      <div class="pt-20">
+        <h2 class="text-lnsf-blue">Formando</h2>
+        <h1 class="text-9xl font-bold mb-4">
+          Líderes del <GradientText>futuro</GradientText>
+        </h1>
+        <p class="text-2xl">
+          Ofrecemos una educación de calidad y un ambiente de aprendizaje
+          inclusivo y estimulante.
+        </p>
+      </div>
+      <!-- Image -->
+    </div>
+  </div>
+</Layout>
