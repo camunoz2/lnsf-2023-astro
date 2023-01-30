@@ -1,25 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GradientText from "../components/GradientText.astro";
+import TextTitle from "../components/TextTitle.astro";
+import StatIndicator from "../components/StatIndicator.astro";
 ---
 
 <Layout title="Liceo Nibaldo Sepúlveda Fernández">
-  <div class="container mx-auto">
-    <div class="grid grid-cols-2">
-      <!-- Text title -->
-      <div class="pt-20">
-        <h2 class="text-lnsf-blue">Formando</h2>
-        <h1 class="text-9xl font-bold mb-4">
-          Líderes del <GradientText>futuro</GradientText>
-        </h1>
-        <p class="text-2xl">
-          Ofrecemos una educación de calidad y un ambiente de aprendizaje
-          inclusivo y estimulante.
-        </p>
-      </div>
-      <!-- Image -->
-      <div>
-        <a href=""></a>
+  <div class="container mx-auto pt-12 md:pt-0 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <TextTitle />
+      <img class="hidden md:block" src="/header_img.png" alt="" />
+    </div>
+  </div>
+
+  <div class="bg-lnsf-blue py-6 md:py-14">
+    <div class="container mx-auto">
+      <div
+        class="grid grid-cols-1 divide-y md:divide-y-0 md:divide-x divide-white/25 md:grid-cols-2 lg:grid-cols-4 items-center justify-center"
+      >
+        <StatIndicator number={700} text="Libros en la biblioteca" />
+        <StatIndicator number={1.1} text="Profesionales por alumno" />
+        <StatIndicator number={30} text="Alumnos en carreras univ." />
+        <StatIndicator number={10} text="Programas de ayuda social" />
       </div>
     </div>
   </div>
