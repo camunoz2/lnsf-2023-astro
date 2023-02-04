@@ -1,0 +1,17 @@
+---
+interface Props {
+  icon: string;
+  date: string;
+}
+
+const { icon, date } = Astro.props;
+---
+
+<div class="flex gap-2 items-center">
+  <div
+    class="rounded-full bg-lnsf-blue/20 justify-center items-center flex p-2"
+  >
+    <img width="15" src={icon} alt="" />
+  </div>
+  <p class="text-lg text-lnsf-blue">{date}</p>
+</div>

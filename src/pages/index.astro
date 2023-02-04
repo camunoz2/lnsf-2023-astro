@@ -5,6 +5,7 @@ import StatIndicator from "../components/StatIndicator.astro";
 import Title from "../components/Title.astro";
 import UnderlineText from "../components/UnderlineText.astro";
 import TextCard from "../components/TextCard.astro";
+import EventCard from "../components/EventCard.astro";
 ---
 
 <Layout title="Liceo Nibaldo Sepúlveda Fernández">
@@ -69,6 +70,34 @@ import TextCard from "../components/TextCard.astro";
       <p class="text-center my-6 text-lg">
         ¡No te pierdas ninguna novedad! Revisa nuestro sitio regularmente.
       </p>
+      <div class="grid grid-cols-2 py-12">
+        <!-- IMAGES -->
+        <img src="/activities_img.png" alt="" />
+
+        <!-- CARDS -->
+        <div class="grid grid-cols-1 gap-2 -translate-x-44">
+          <EventCard
+            title="Salida a la montaña en familia"
+            category="Convivencia Escolar"
+            date="22 de Diciembre"
+            time="12:00"
+          />
+          <div class="-translate-x-14">
+            <EventCard
+              title="Brindis con los profesores"
+              category="Convivencia ssd"
+              date="31 de Febrero"
+              time="16:00"
+            />
+          </div>
+          <EventCard
+            title="Brindis con los profesores"
+            category="Convivencia ssd"
+            date="31 de Febrero"
+            time="16:00"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </Layout>

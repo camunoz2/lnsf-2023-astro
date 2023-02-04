@@ -1,0 +1,25 @@
+---
+import ShowDate from "./ShowDate.astro";
+
+interface Props {
+  title: string;
+  category: string;
+  date: string;
+  time: string;
+}
+
+const { title, category, date, time } = Astro.props;
+---
+
+<div
+  class="border-2 border-lnsf-light rounded-md px-8 py-6 flex flex-col gap-4 shadow-lnsf h-60 bg-white"
+>
+  <div class="flex justify-between">
+    <ShowDate icon="/svgCalendar.png" date={date} />
+    <ShowDate icon="/svgTime.png" date={time} />
+  </div>
+
+  <h3 class="text-4xl">{title}</h3>
+
+  <p class="text-lnsf-light-text">{category}</p>
+</div>
