@@ -2,10 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import TextTitle from "../components/TextTitle.astro";
 import StatIndicator from "../components/StatIndicator.astro";
-import Title from "../components/Title.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 import UnderlineText from "../components/UnderlineText.astro";
 import TextCard from "../components/TextCard.astro";
 import EventCard from "../components/EventCard.astro";
+import Info from "../components/Info.astro";
+import { MENU_ITEMS } from "../config/menuItems";
 ---
 
 <Layout title="Liceo Nibaldo Sepúlveda Fernández">
@@ -34,10 +36,10 @@ import EventCard from "../components/EventCard.astro";
   <!-- INTRO -->
   <div class="container mx-auto py-24">
     <div class="py-12">
-      <Title
+      <SectionTitle
         >Bienvenidos al
         <UnderlineText>Nibaldo</UnderlineText>
-      </Title>
+      </SectionTitle>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12">
@@ -63,10 +65,10 @@ import EventCard from "../components/EventCard.astro";
   <!-- CALENDAR -->
   <div class="container mx-auto py-24">
     <div class="py-12">
-      <Title
+      <SectionTitle
         >Calendario de
         <UnderlineText>Actividades</UnderlineText>
-      </Title>
+      </SectionTitle>
       <p class="text-center my-6 text-lg">
         ¡No te pierdas ninguna novedad! Revisa nuestro sitio regularmente.
       </p>
@@ -96,6 +98,49 @@ import EventCard from "../components/EventCard.astro";
             date="31 de Febrero"
             time="16:00"
           />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="container mx-auto py-12">
+    <SectionTitle>
+      ¿Qué esperas?
+      <UnderlineText>¡Únete al nibaldo!</UnderlineText>
+    </SectionTitle>
+
+    <div class="grid grid-cols-3 gap-4 mt-24">
+      <!-- 1 -->
+      <div>
+        <h4 class="font-bold mb-10 text-3xl">Conversemos</h4>
+        <div class="flex flex-col gap-6">
+          <Info
+            icon="/svgTelephone.png"
+            title="Teléfono"
+            info="200 300 24 24"
+          />
+          <Info
+            icon="/svgTime.png"
+            title="Horario de atención"
+            info="Lun - Vie | 8:30 - 18:00"
+          />
+          <Info
+            icon="/svgPin.png"
+            title="Ubicación"
+            info="San Martín 386, Portezuelo"
+          />
+        </div>
+      </div>
+      <!-- 2 -->
+      <div>
+        <h4 class="font-bold mb-10 text-3xl">Algunos Links</h4>
+        <div class="flex flex-col gap-1">
+          {
+            MENU_ITEMS.map((item) => {
+              return <p>{item.title}</p>;
+            })
+          }
         </div>
       </div>
     </div>

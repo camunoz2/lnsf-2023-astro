@@ -1,19 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 import logo from "../images/logo.png";
-
-export interface Menu {
-  title: string;
-  link: string;
-  selected?: boolean;
-  submenu?: Menu[];
-}
-
-export interface Props {
-  menuItems: Menu[];
-}
-
-const { menuItems } = Astro.props;
+import { MENU_ITEMS } from "../config/menuItems";
 ---
 
 <div class="container mx-auto px-4 py-6">
@@ -29,7 +17,7 @@ const { menuItems } = Astro.props;
     <nav>
       <ul class="flex gap-2 text-gray-400">
         {
-          menuItems.map((item) => (
+          MENU_ITEMS.map((item) => (
             <li
               class={
                 item.selected
