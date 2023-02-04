@@ -2,9 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import TextTitle from "../components/TextTitle.astro";
 import StatIndicator from "../components/StatIndicator.astro";
+import Title from "../components/Title.astro";
+import UnderlineText from "../components/UnderlineText.astro";
+import TextCard from "../components/TextCard.astro";
 ---
 
 <Layout title="Liceo Nibaldo Sepúlveda Fernández">
+  <!-- HERO -->
   <div class="container mx-auto pt-12 md:pt-0 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <TextTitle />
@@ -12,6 +16,7 @@ import StatIndicator from "../components/StatIndicator.astro";
     </div>
   </div>
 
+  <!-- DIVIDER -->
   <div class="bg-lnsf-blue py-6 md:py-14">
     <div class="container mx-auto">
       <div
@@ -22,6 +27,48 @@ import StatIndicator from "../components/StatIndicator.astro";
         <StatIndicator number={30} text="Alumnos en carreras univ." />
         <StatIndicator number={10} text="Programas de ayuda social" />
       </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="container mx-auto py-24">
+    <div class="py-12">
+      <Title
+        >Bienvenidos al
+        <UnderlineText>Nibaldo</UnderlineText>
+      </Title>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12">
+      <TextCard
+        title="Artes"
+        body="La educación artística y musical es fundamental para el desarrollo integral de las personas, ya que promueve la creatividad, la expresión y la empatía, además de ser una forma de entretenimiento y disfrute."
+      />
+      <TextCard
+        title="Vida Sana"
+        body="Educar sobre los hábitos de una vida sana y el deporte es importante para fomentar la salud y el bienestar físico y mental, y puede contribuir a prevenir enfermedades y mejorar la calidad de vida de las personas."
+      />
+      <TextCard
+        title="Humanista"
+        body="La educación científico-humanista fomenta el desarrollo de habilidades como el pensamiento crítico y el razonamiento lógico, además de promover la comprensión y el respeto hacia los demás y el mundo que nos rodea."
+      />
+      <TextCard
+        title="Bicentenario"
+        body="Pertenecer a la red de liceos bicentenarios ofrece a los estudiantes una educación de alta calidad y prestigio, y les brinda la oportunidad de formarse como personas íntegras y críticas, capaces de enfrentar los retos del mundo actual."
+      />
+    </div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="container mx-auto py-24">
+    <div class="py-12">
+      <Title
+        >Calendario de
+        <UnderlineText>Actividades</UnderlineText>
+      </Title>
+      <p class="text-center my-6 text-lg">
+        ¡No te pierdas ninguna novedad! Revisa nuestro sitio regularmente.
+      </p>
     </div>
   </div>
 </Layout>
