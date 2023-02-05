@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  date: string;
+}
+
+const { title, date } = Astro.props;
+---
+
+<div class="flex gap-2">
+  <div class="rounded-md bg-lnsf-light-text w-28 h-20"></div>
+  <div class="flex flex-col justify-center">
+    <h4 class="text-2xl">{title}</h4>
+    <div class="flex gap-2">
+      <img src="/svgCalendar.png" class="w-3 object-contain" alt="" />
+      <p class="text-sm">{date}</p>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import SectionTitle from "../components/SectionTitle.astro";
 import UnderlineText from "../components/UnderlineText.astro";
 import TextCard from "../components/TextCard.astro";
 import EventCard from "../components/EventCard.astro";
+import FooterArticle from "../components/FooterArticle.astro";
 import Info from "../components/Info.astro";
 import { MENU_ITEMS } from "../config/menuItems";
 ---
@@ -107,7 +108,7 @@ import { MENU_ITEMS } from "../config/menuItems";
   <div class="container mx-auto py-12">
     <SectionTitle>
       ¿Qué esperas?
-      <UnderlineText>¡Únete al nibaldo!</UnderlineText>
+      <UnderlineText>¡Únete al Nibaldo!</UnderlineText>
     </SectionTitle>
 
     <div class="grid grid-cols-3 gap-4 mt-24">
@@ -138,10 +139,25 @@ import { MENU_ITEMS } from "../config/menuItems";
         <div class="flex flex-col gap-1">
           {
             MENU_ITEMS.map((item) => {
-              return <p>{item.title}</p>;
+              return (
+                <div class="flex gap-2">
+                  <span class="text-lnsf-blue">---</span>
+                  <p>{item.title}</p>
+                </div>
+              );
             })
           }
         </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="flex flex-col gap-2">
+        <h4 class="font-bold mb-10 text-3xl">Noticias</h4>
+        <FooterArticle
+          title="Brindis en el nibaldo"
+          date="12 de Agosto, 2022"
+        />
+        <FooterArticle title="Otro artículo" date="24 de Julio, 2022" />
       </div>
     </div>
   </div>
