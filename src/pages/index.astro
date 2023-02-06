@@ -9,6 +9,26 @@ import EventCard from "../components/EventCard.astro";
 import FooterArticle from "../components/FooterArticle.astro";
 import Info from "../components/Info.astro";
 import { MENU_ITEMS } from "../config/menuItems";
+import type { Stats } from "../models/stats";
+
+const apiEndpoint = import.meta.env.HYGRAPH_ENDPOINT;
+
+const query = {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    query: `
+        query BlogEntries {
+          statistics {
+            statName
+            statQuantity
+          }
+        }`,
+  }),
+};
+const response = await fetch(apiEndpoint, query);
+const json = await response.json();
+const stats: Stats[] = json.data.statistics;
 ---
 
 <Layout title="Liceo Nibaldo Sepúlveda Fernández">
@@ -26,10 +46,13 @@ import { MENU_ITEMS } from "../config/menuItems";
       <div
         class="grid grid-cols-1 divide-y md:divide-y-0 md:divide-x divide-white/25 md:grid-cols-2 lg:grid-cols-4 items-center justify-center"
       >
-        <StatIndicator number={700} text="Libros en la biblioteca" />
-        <StatIndicator number={1.1} text="Profesionales por alumno" />
-        <StatIndicator number={30} text="Alumnos en carreras univ." />
-        <StatIndicator number={10} text="Programas de ayuda social" />
+        {
+          stats.map((stat) => {
+            return (
+              <StatIndicator number={stat.statQuantity} text={stat.statName} />
+            );
+          })
+        }
       </div>
     </div>
   </div>
