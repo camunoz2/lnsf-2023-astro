@@ -4,10 +4,9 @@ export const MENU_ITEMS: NavMenu[] = [
   {
     title: "Inicio",
     link: "/",
-    selected: true,
   },
   {
-    title: "Sobre Nosotros",
-    link: "/nosotros",
+    title: "Noticias",
+    link: "/noticias",
   },
 ];

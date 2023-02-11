@@ -3,6 +3,8 @@ import logo from "../images/logo.png";
 import { MENU_ITEMS } from "../config/menuItems";
 import type { Config } from "../models/config";
 
+const pathname = new URL(Astro.request.url).pathname;
+
 const apiEndpoint = import.meta.env.HYGRAPH_ENDPOINT;
 
 const query = {
@@ -41,12 +43,12 @@ const config: Config = json.data.config;
           MENU_ITEMS.map((item) => (
             <li
               class={
-                item.selected
+                pathname === item.link
                   ? "text-lnsf-blue font-bold cursor-pointer"
                   : "cursor-pointer hover:text-lnsf-blue"
               }
             >
-              {item.title}
+              <a href={item.link}>{item.title}</a>
             </li>
           ))
         }
