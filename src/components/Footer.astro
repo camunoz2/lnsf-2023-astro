@@ -1,0 +1,67 @@
+---
+import { MENU_ITEMS } from "../config/menuItems";
+import type { Config } from "../models/config";
+import FooterArticle from "./FooterArticle.astro";
+import FooterTitle from "./FooterTitle.astro";
+import Info from "./Info.astro";
+
+const apiEndpoint = import.meta.env.HYGRAPH_ENDPOINT;
+
+const query = {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    query: `
+        {
+
+          config(where: {id: "cle00dunc3ikr0bkm271oym1e"}) {
+            id
+            schoolName
+            phone
+            address
+            workingHours
+          }
+        }`,
+  }),
+};
+const response = await fetch(apiEndpoint, query);
+const json = await response.json();
+
+const config: Config = json.data.config;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-4 mt-24">
+  <div>
+    <FooterTitle>Conversemos</FooterTitle>
+    <div class="flex flex-col gap-6">
+      <Info icon="/svgTelephone.png" title="Teléfono" info={config.phone} />
+      <Info
+        icon="/svgTime.png"
+        title="Horario de atención"
+        info={config.workingHours}
+      />
+      <Info icon="/svgPin.png" title="Ubicación" info={config.address} />
+    </div>
+  </div>
+  <div>
+    <FooterTitle>Algunos Links</FooterTitle>
+    <div class="flex flex-col gap-1">
+      {
+        MENU_ITEMS.map((item) => {
+          return (
+            <div class="flex gap-2">
+              <span class="text-lnsf-blue">---</span>
+              <p>{item.title}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <FooterTitle>Noticias</FooterTitle>
+    <FooterArticle title="Brindis en el nibaldo" date="12 de Agosto, 2022" />
+    <FooterArticle title="Otro artículo" date="24 de Julio, 2022" />
+  </div>
+</div>

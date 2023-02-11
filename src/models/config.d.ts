@@ -10,4 +10,7 @@ export interface Config {
   address: string;
   workingHours: string;
   institutionalSeals: InstitutionalSeal[];
+  contactEmail: string;
+  instagram: string;
+  facebook: string;
 }

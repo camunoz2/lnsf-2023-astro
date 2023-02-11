@@ -5,12 +5,10 @@ import StatIndicator from "../components/StatIndicator.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import UnderlineText from "../components/UnderlineText.astro";
 import TextCard from "../components/TextCard.astro";
-import EventCard from "../components/EventCard.astro";
-import FooterArticle from "../components/FooterArticle.astro";
-import Info from "../components/Info.astro";
-import { MENU_ITEMS } from "../config/menuItems";
 import type { Stats } from "../models/stats";
 import type { Config } from "../models/config";
+import ActivitiesCalendar from "../components/ActivitiesCalendar.astro";
+import Footer from "../components/Footer.astro";
 
 const apiEndpoint = import.meta.env.HYGRAPH_ENDPOINT;
 
@@ -43,7 +41,7 @@ const stats: Stats[] = json.data.statistics;
 const config: Config = json.data.config;
 ---
 
-<Layout title="Liceo Nibaldo Sepúlveda Fernández">
+<Layout title={config.schoolName}>
   <div class="container mx-auto pt-12 md:pt-0 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <TextTitle />
@@ -93,31 +91,8 @@ const config: Config = json.data.config;
       <p class="text-center my-6 text-lg">
         ¡No te pierdas ninguna novedad! Revisa nuestro sitio regularmente.
       </p>
-      <div class="grid grid-cols-2 py-12">
-        <img src="/activities_img.png" alt="" />
-
-        <div class="grid grid-cols-1 gap-2 -translate-x-44">
-          <EventCard
-            title="Salida a la montaña en familia"
-            category="Convivencia Escolar"
-            date="22 de Diciembre"
-            time="12:00"
-          />
-          <div class="-translate-x-14">
-            <EventCard
-              title="Brindis con los profesores"
-              category="Convivencia ssd"
-              date="31 de Febrero"
-              time="16:00"
-            />
-          </div>
-          <EventCard
-            title="Brindis con los profesores"
-            category="Convivencia ssd"
-            date="31 de Febrero"
-            time="16:00"
-          />
-        </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 py-12">
+        <ActivitiesCalendar />
       </div>
     </div>
   </div>
@@ -127,44 +102,6 @@ const config: Config = json.data.config;
       ¿Qué esperas?
       <UnderlineText>¡Únete al Nibaldo!</UnderlineText>
     </SectionTitle>
-
-    <div class="grid grid-cols-3 gap-4 mt-24">
-      <div>
-        <h4 class="font-bold mb-10 text-3xl">Conversemos</h4>
-        <div class="flex flex-col gap-6">
-          <Info icon="/svgTelephone.png" title="Teléfono" info={config.phone} />
-          <Info
-            icon="/svgTime.png"
-            title="Horario de atención"
-            info={config.workingHours}
-          />
-          <Info icon="/svgPin.png" title="Ubicación" info={config.address} />
-        </div>
-      </div>
-      <div>
-        <h4 class="font-bold mb-10 text-3xl">Algunos Links</h4>
-        <div class="flex flex-col gap-1">
-          {
-            MENU_ITEMS.map((item) => {
-              return (
-                <div class="flex gap-2">
-                  <span class="text-lnsf-blue">---</span>
-                  <p>{item.title}</p>
-                </div>
-              );
-            })
-          }
-        </div>
-      </div>
-
-      <div class="flex flex-col gap-2">
-        <h4 class="font-bold mb-10 text-3xl">Noticias</h4>
-        <FooterArticle
-          title="Brindis en el nibaldo"
-          date="12 de Agosto, 2022"
-        />
-        <FooterArticle title="Otro artículo" date="24 de Julio, 2022" />
-      </div>
-    </div>
+    <Footer />
   </div>
 </Layout>

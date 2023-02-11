@@ -1,6 +1,28 @@
 ---
 import logo from "../images/logo.png";
 import { MENU_ITEMS } from "../config/menuItems";
+import type { Config } from "../models/config";
+
+const apiEndpoint = import.meta.env.HYGRAPH_ENDPOINT;
+
+const query = {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    query: `
+        {
+          config(where: {id: "cle00dunc3ikr0bkm271oym1e"}) {
+            id
+            instagram
+            facebook
+          }
+        }`,
+  }),
+};
+const response = await fetch(apiEndpoint, query);
+const json = await response.json();
+
+const config: Config = json.data.config;
 ---
 
 <div class="container mx-auto px-4 py-6">
@@ -28,6 +50,16 @@ import { MENU_ITEMS } from "../config/menuItems";
             </li>
           ))
         }
+        <li>
+          <a href={config.instagram}>
+            <img width={23} src="/igLogo.svg" alt="instagram logo" />
+          </a>
+        </li>
+        <li>
+          <a href={config.facebook}>
+            <img width={23} src="/fbLogo.svg" alt="facebook logo" />
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
