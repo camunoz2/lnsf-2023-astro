@@ -10,6 +10,7 @@ import FooterArticle from "../components/FooterArticle.astro";
 import Info from "../components/Info.astro";
 import { MENU_ITEMS } from "../config/menuItems";
 import type { Stats } from "../models/stats";
+import type { Config } from "../models/config";
 
 const apiEndpoint = import.meta.env.HYGRAPH_ENDPOINT;
 
@@ -18,21 +19,31 @@ const query = {
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     query: `
-        query BlogEntries {
+        {
           statistics {
+            id
             statName
             statQuantity
+          }
+          config(where: {id: "cle00dunc3ikr0bkm271oym1e"}) {
+            id
+            schoolName
+            phone
+            address
+            workingHours
+            institutionalSeals
           }
         }`,
   }),
 };
 const response = await fetch(apiEndpoint, query);
 const json = await response.json();
+
 const stats: Stats[] = json.data.statistics;
+const config: Config = json.data.config;
 ---
 
 <Layout title="Liceo Nibaldo Sepúlveda Fernández">
-  <!-- HERO -->
   <div class="container mx-auto pt-12 md:pt-0 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <TextTitle />
@@ -40,7 +51,6 @@ const stats: Stats[] = json.data.statistics;
     </div>
   </div>
 
-  <!-- DIVIDER -->
   <div class="bg-lnsf-blue py-6 md:py-14">
     <div class="container mx-auto">
       <div
@@ -57,50 +67,35 @@ const stats: Stats[] = json.data.statistics;
     </div>
   </div>
 
-  <!-- INTRO -->
   <div class="container mx-auto py-24">
     <div class="py-12">
-      <SectionTitle
-        >Bienvenidos al
+      <SectionTitle>
+        Bienvenidos al
         <UnderlineText>Nibaldo</UnderlineText>
       </SectionTitle>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12">
-      <TextCard
-        title="Artes"
-        body="La educación artística y musical es fundamental para el desarrollo integral de las personas, ya que promueve la creatividad, la expresión y la empatía, además de ser una forma de entretenimiento y disfrute."
-      />
-      <TextCard
-        title="Vida Sana"
-        body="Educar sobre los hábitos de una vida sana y el deporte es importante para fomentar la salud y el bienestar físico y mental, y puede contribuir a prevenir enfermedades y mejorar la calidad de vida de las personas."
-      />
-      <TextCard
-        title="Humanista"
-        body="La educación científico-humanista fomenta el desarrollo de habilidades como el pensamiento crítico y el razonamiento lógico, además de promover la comprensión y el respeto hacia los demás y el mundo que nos rodea."
-      />
-      <TextCard
-        title="Bicentenario"
-        body="Pertenecer a la red de liceos bicentenarios ofrece a los estudiantes una educación de alta calidad y prestigio, y les brinda la oportunidad de formarse como personas íntegras y críticas, capaces de enfrentar los retos del mundo actual."
-      />
+      {
+        config.institutionalSeals.map((item) => {
+          return <TextCard title={item.name} body={item.description} />;
+        })
+      }
     </div>
   </div>
 
-  <!-- CALENDAR -->
   <div class="container mx-auto py-24">
     <div class="py-12">
-      <SectionTitle
-        >Calendario de
+      <SectionTitle>
+        Calendario de
         <UnderlineText>Actividades</UnderlineText>
       </SectionTitle>
       <p class="text-center my-6 text-lg">
         ¡No te pierdas ninguna novedad! Revisa nuestro sitio regularmente.
       </p>
       <div class="grid grid-cols-2 py-12">
-        <!-- IMAGES -->
         <img src="/activities_img.png" alt="" />
 
-        <!-- CARDS -->
         <div class="grid grid-cols-1 gap-2 -translate-x-44">
           <EventCard
             title="Salida a la montaña en familia"
@@ -127,7 +122,6 @@ const stats: Stats[] = json.data.statistics;
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="container mx-auto py-12">
     <SectionTitle>
       ¿Qué esperas?
@@ -135,28 +129,18 @@ const stats: Stats[] = json.data.statistics;
     </SectionTitle>
 
     <div class="grid grid-cols-3 gap-4 mt-24">
-      <!-- 1 -->
       <div>
         <h4 class="font-bold mb-10 text-3xl">Conversemos</h4>
         <div class="flex flex-col gap-6">
-          <Info
-            icon="/svgTelephone.png"
-            title="Teléfono"
-            info="200 300 24 24"
-          />
+          <Info icon="/svgTelephone.png" title="Teléfono" info={config.phone} />
           <Info
             icon="/svgTime.png"
             title="Horario de atención"
-            info="Lun - Vie | 8:30 - 18:00"
+            info={config.workingHours}
           />
-          <Info
-            icon="/svgPin.png"
-            title="Ubicación"
-            info="San Martín 386, Portezuelo"
-          />
+          <Info icon="/svgPin.png" title="Ubicación" info={config.address} />
         </div>
       </div>
-      <!-- 2 -->
       <div>
         <h4 class="font-bold mb-10 text-3xl">Algunos Links</h4>
         <div class="flex flex-col gap-1">
@@ -173,7 +157,6 @@ const stats: Stats[] = json.data.statistics;
         </div>
       </div>
 
-      <!-- 3 -->
       <div class="flex flex-col gap-2">
         <h4 class="font-bold mb-10 text-3xl">Noticias</h4>
         <FooterArticle
