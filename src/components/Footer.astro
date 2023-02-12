@@ -1,33 +1,12 @@
 ---
 import { MENU_ITEMS } from "../config/menuItems";
-import type { Config } from "../models/config";
 import FooterArticle from "./FooterArticle.astro";
 import FooterTitle from "./FooterTitle.astro";
 import Info from "./Info.astro";
+import { config } from "../services/getConfig";
+import { getBlogPost } from "../services/getBlogPosts";
 
-const apiEndpoint = import.meta.env.HYGRAPH_ENDPOINT;
-
-const query = {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    query: `
-        {
-
-          config(where: {id: "cle00dunc3ikr0bkm271oym1e"}) {
-            id
-            schoolName
-            phone
-            address
-            workingHours
-          }
-        }`,
-  }),
-};
-const response = await fetch(apiEndpoint, query);
-const json = await response.json();
-
-const config: Config = json.data.config;
+const blogPost = await getBlogPost(2);
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-4 mt-24">
@@ -61,7 +40,16 @@ const config: Config = json.data.config;
 
   <div class="flex flex-col gap-2">
     <FooterTitle>Noticias</FooterTitle>
-    <FooterArticle title="Brindis en el nibaldo" date="12 de Agosto, 2022" />
-    <FooterArticle title="Otro artículo" date="24 de Julio, 2022" />
+    {
+      blogPost.map((post) => {
+        return (
+          <FooterArticle
+            title={post.title}
+            dateAndTime={post.dateAndTime}
+            image={post.featuredImage}
+          />
+        );
+      })
+    }
   </div>
 </div>

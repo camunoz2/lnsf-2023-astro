@@ -1,6 +1,9 @@
 ---
 import EventCard from "./EventCard.astro";
-import { blogPosts } from "../services/getBlogPosts";
+import { getBlogPost } from "../services/getBlogPosts";
+
+const MAX_POSTS = 3;
+const blogPosts = await getBlogPost(MAX_POSTS);
 ---
 
 <img class="hidden lg:block" src="/activities_img.jpg" alt="" />

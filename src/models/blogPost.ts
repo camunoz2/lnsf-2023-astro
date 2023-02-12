@@ -2,7 +2,7 @@ type DateTime = string;
 interface RichText {
   mardown: string;
 }
-interface ImageAsset {
+export interface ImageAsset {
   id: string;
   url: string;
 }

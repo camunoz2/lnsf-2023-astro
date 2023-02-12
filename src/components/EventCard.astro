@@ -1,5 +1,5 @@
 ---
-import { parseDateTime } from "../utils/dateTimeUtils";
+import { date, time } from "../utils/dateTimeUtils";
 import ShowDate from "./ShowDate.astro";
 import ShowTime from "./ShowTime.astro";
 
@@ -10,22 +10,14 @@ interface Props {
 }
 
 const { title, category, dateTime } = Astro.props;
-const date = parseDateTime(dateTime).toLocaleDateString("es", {
-  day: "numeric",
-  month: "long",
-});
-const time = parseDateTime(dateTime).toLocaleTimeString("es", {
-  hour: "numeric",
-  minute: "numeric",
-});
 ---
 
 <div
   class="border-2 border-lnsf-light rounded-md px-8 py-6 flex flex-col gap-4 shadow-lnsf h-60 bg-white"
 >
   <div class="flex justify-between">
-    <ShowDate date={date} />
-    <ShowTime time={time} />
+    <ShowDate date={date(dateTime)} />
+    <ShowTime time={time(dateTime)} />
   </div>
   <h3 class="text-4xl">{title}</h3>
   <div class="flex gap-2">
