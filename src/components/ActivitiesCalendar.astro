@@ -1,28 +1,24 @@
 ---
 import EventCard from "./EventCard.astro";
+import { blogPosts } from "../services/getBlogPosts";
+
+console.log(blogPosts);
 ---
 
 <img class="hidden lg:block" src="/activities_img.jpg" alt="" />
 
 <div class="grid grid-cols-1 gap-2 translate-x-0 lg:-translate-x-44">
-  <EventCard
-    title="Salida a la montaña en familia"
-    category="Convivencia Escolar"
-    date="22 de Diciembre"
-    time="12:00"
-  />
-  <div class="translate-x-0 lg:-translate-x-14">
-    <EventCard
-      title="Brindis con los profesores"
-      category="Convivencia ssd"
-      date="31 de Febrero"
-      time="16:00"
-    />
-  </div>
-  <EventCard
-    title="Brindis con los profesores"
-    category="Convivencia ssd"
-    date="31 de Febrero"
-    time="16:00"
-  />
+  {
+    blogPosts.map((post, index) => {
+      return (
+        <div class={index === 1 ? "translate-x-0 lg:-translate-x-14" : ""}>
+          <EventCard
+            title={post.title}
+            category={post.category}
+            dateTime={post.dateAndTime}
+          />
+        </div>
+      );
+    })
+  }
 </div>

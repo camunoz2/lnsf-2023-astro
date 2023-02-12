@@ -1,22 +1,31 @@
 ---
+import { parseDateTime } from "../utils/dateTimeUtils";
 import ShowDate from "./ShowDate.astro";
+import ShowTime from "./ShowTime.astro";
 
 interface Props {
   title: string;
-  category: string;
-  date: string;
-  time: string;
+  category: string[];
+  dateTime: string;
 }
 
-const { title, category, date, time } = Astro.props;
+const { title, category, dateTime } = Astro.props;
+const date = parseDateTime(dateTime).toLocaleDateString("es", {
+  day: "numeric",
+  month: "long",
+});
+const time = parseDateTime(dateTime).toLocaleTimeString("es", {
+  hour: "numeric",
+  minute: "numeric",
+});
 ---
 
 <div
   class="border-2 border-lnsf-light rounded-md px-8 py-6 flex flex-col gap-4 shadow-lnsf h-60 bg-white"
 >
   <div class="flex justify-between">
-    <ShowDate icon="/svgCalendar.png" date={date} />
-    <ShowDate icon="/svgTime.png" date={time} />
+    <ShowDate date={date} />
+    <ShowTime time={time} />
   </div>
   <h3 class="text-4xl">{title}</h3>
   <p class="text-lnsf-light-text">{category}</p>
