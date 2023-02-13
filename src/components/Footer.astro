@@ -30,7 +30,7 @@ const blogPost = await getBlogPost(2);
           return (
             <div class="flex gap-2">
               <span class="text-lnsf-blue">---</span>
-              <p>{item.title}</p>
+              <a href={`${item.link}`}>{item.title}</a>
             </div>
           );
         })

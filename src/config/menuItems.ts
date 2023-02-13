@@ -7,6 +7,6 @@ export const MENU_ITEMS: NavMenu[] = [
   },
   {
     title: "Noticias",
-    link: "/noticias/archivo",
+    link: "/noticias",
   },
 ];
