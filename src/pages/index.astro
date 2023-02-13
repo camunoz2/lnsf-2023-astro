@@ -5,19 +5,19 @@ import StatIndicator from "../components/StatIndicator.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import UnderlineText from "../components/UnderlineText.astro";
 import TextCard from "../components/TextCard.astro";
-import ActivitiesCalendar from "../components/ActivitiesCalendar.astro";
+import NewsCalendar from "../components/NewsCalendar.astro";
 import Footer from "../components/Footer.astro";
 import { stats } from "../services/getStatistics";
 import { config } from "../services/getConfig";
 ---
 
-<Layout title={config.schoolName}>
-  <div class="container mx-auto pt-12 md:pt-0 pb-20">
+<Layout title="Inicio">
+  <header class="container mx-auto pt-12 md:pt-0 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <TextTitle />
       <img class="hidden md:block" src="/header_img.jpg" alt="" />
     </div>
-  </div>
+  </header>
 
   <div class="bg-lnsf-blue py-6 md:py-14">
     <div class="container mx-auto">
@@ -59,10 +59,10 @@ import { config } from "../services/getConfig";
         <UnderlineText>Actividades</UnderlineText>
       </SectionTitle>
       <p class="text-center my-6 text-lg">
-        ¡No te pierdas ninguna novedad! Revisa nuestro sitio regularmente.
+        ¡No te pierdas ninguna novedad! Revisa nuestro sitio regularmente
       </p>
       <div class="grid grid-cols-1 lg:grid-cols-2 py-12">
-        <ActivitiesCalendar />
+        <NewsCalendar />
       </div>
     </div>
   </div>

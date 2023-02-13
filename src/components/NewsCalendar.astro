@@ -17,6 +17,7 @@ const blogPosts = await getBlogPost(MAX_POSTS);
             title={post.title}
             category={post.category}
             dateTime={post.dateAndTime}
+            link={post.slug}
           />
         </div>
       );

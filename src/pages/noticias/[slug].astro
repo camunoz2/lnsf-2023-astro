@@ -1,20 +1,32 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import type { BlogPost } from "../../models/blogPost";
 import { getAllBlogPosts } from "../../services/getBlogPosts";
 
 export async function getStaticPaths() {
   const blogPosts = await getAllBlogPosts();
   return blogPosts?.map((post) => {
     return {
-      params: { slug: post.slug },
+      params: {
+        slug: post.slug,
+      },
+      props: { post },
     };
   });
 }
 
-const { slug } = Astro.params;
+const { post } = Astro.props as { post: BlogPost };
 ---
 
 <Layout title="Liceo Nibaldo | Noticias">
-  <h1>Noticias!</h1>
-  {slug}
+  <header class="container mx-auto">
+    <div class="flex flex-col gap-2">
+      <img
+        class="rounded-md shodow-md"
+        width={350}
+        src={post.featuredImage.url}
+        alt=""
+      />
+    </div>
+  </header>
 </Layout>

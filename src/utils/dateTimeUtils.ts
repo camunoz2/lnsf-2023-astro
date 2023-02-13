@@ -1,19 +1,17 @@
-const parseDateTime = (dateTime: string): Date => {
+export const parseDateTime = (dateTime: string): Date => {
   return new Date(dateTime);
 };
 
-const date = (dateTime: string) => {
+export const formatDate = (dateTime: string) => {
   return parseDateTime(dateTime).toLocaleDateString("es", {
     day: "numeric",
     month: "long",
   });
 };
 
-const time = (dateTime: string) => {
+export const formatTime = (dateTime: string) => {
   return parseDateTime(dateTime).toLocaleTimeString("es", {
     hour: "numeric",
     minute: "numeric",
   });
 };
-
-export { date, time };

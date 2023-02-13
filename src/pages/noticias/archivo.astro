@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getAllBlogPosts } from "../../services/getBlogPosts";
+
+const blogPosts = await getAllBlogPosts();
+---
+
+<Layout title="Noticias">
+  <h1>Noticias</h1>
+
+  {
+    blogPosts.map((blog) => {
+      return <p>{blog.title}</p>;
+    })
+  }
+</Layout>
