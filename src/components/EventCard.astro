@@ -20,13 +20,13 @@ const { title, category, dateTime, link } = Astro.props;
     <ShowDate date={formatDate(dateTime)} />
     <ShowTime time={formatTime(dateTime)} />
   </div>
-  <h3 class="text-4xl">{title}</h3>
+  <h3 class="text-3xl md:text-4xl">{title}</h3>
   <div class="flex justify-between">
     <div class="flex gap-2 items-center">
       {
         category.map((c) => {
           return (
-            <p class="text-lnsf-light-text py-1 px-2 rounded-sm bg-slate-200">
+            <p class="text-lnsf-light-text text-sm md:text-base py-1 px-2 rounded-sm bg-slate-200">
               {c}
             </p>
           );
@@ -34,7 +34,7 @@ const { title, category, dateTime, link } = Astro.props;
       }
     </div>
     <a
-      class="bg-lnsf-blue hover:bg-lnsf-blue/80 px-4 py-2 rounded-sm shadow-xl text-white"
+      class="bg-lnsf-blue hover:bg-lnsf-blue/80 px-4 py-2 rounded-sm shadow-xl text-white text-sm md:text-base"
       href={`/noticias/${link}`}>Leer noticia</a
     >
   </div>
