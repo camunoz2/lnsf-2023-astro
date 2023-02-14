@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  link: string;
+  date: string;
+  categories: string[];
+}
+
+const { title, date, image, link, categories } = Astro.props;
+---
+
+<div class="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow">
+  <img src={image} class="aspect-video w-full object-cover" alt="" />
+  <div class="p-4">
+    <p class="mb-1 text-sm text-primary-500">
+      LNSF • <time>18 Nov 2022</time>
+    </p>
+    <a href={`/noticias/${link}`} class="text-xl font-medium text-gray-900"
+      >{title}</a
+    >
+    <div class="mt-4 flex gap-2">
+      {
+        categories.map((cat) => (
+          <span class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
+            {cat}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</div>

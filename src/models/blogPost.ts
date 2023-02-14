@@ -1,10 +1,11 @@
 type DateTime = string;
 interface RichText {
-  mardown: string;
+  markdown: string;
 }
 export interface ImageAsset {
   id: string;
   url: string;
+  handle: string;
 }
 
 export interface BlogPost {

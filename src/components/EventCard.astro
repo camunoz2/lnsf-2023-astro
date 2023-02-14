@@ -22,7 +22,7 @@ const { title, category, dateTime, link } = Astro.props;
   </div>
   <h3 class="text-4xl">{title}</h3>
   <div class="flex justify-between">
-    <div class="flex gap-2">
+    <div class="flex gap-2 items-center">
       {
         category.map((c) => {
           return (
@@ -33,6 +33,9 @@ const { title, category, dateTime, link } = Astro.props;
         })
       }
     </div>
-    <a href={`/noticias/${link}`}>Leer noticia</a>
+    <a
+      class="bg-lnsf-blue hover:bg-lnsf-blue/80 px-4 py-2 rounded-sm shadow-xl text-white"
+      href={`/noticias/${link}`}>Leer noticia</a
+    >
   </div>
 </div>

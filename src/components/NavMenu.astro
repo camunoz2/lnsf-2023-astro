@@ -8,6 +8,29 @@ import { getLinkUrlFirstSegment } from "../utils";
 ---
 
 <div class="container mx-auto px-4 py-6">
+  <div
+    class="flex gap-2 md:hidden border border-slate-50 rounded-md px-2 py-3 items-center"
+  >
+    <a class="mr-5" href="/">
+      <img width={35} height={35} src={logo} alt="logo lnsf" />
+    </a>
+    {
+      MENU_ITEMS.map((item) => {
+        return (
+          <a
+            class={
+              pathnameFirstSegment === getLinkUrlFirstSegment(item.link)
+                ? "text-lnsf-blue font-bold cursor-pointer"
+                : "cursor-pointer hover:text-lnsf-blue"
+            }
+            href={item.link}
+          >
+            {item.title}
+          </a>
+        );
+      })
+    }
+  </div>
   <div class="hidden md:flex justify-between items-center">
     <div class="flex gap-4 items-center">
       <a href="/">

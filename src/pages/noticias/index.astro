@@ -1,4 +1,7 @@
 ---
+import SingleNews from "../../components/SingleNews.astro";
+import StatIndicator from "../../components/StatIndicator.astro";
+import TextTitle from "../../components/TextTitle.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getAllBlogPosts } from "../../services/getBlogPosts";
 
@@ -6,11 +9,26 @@ const blogPosts = await getAllBlogPosts();
 ---
 
 <Layout title="Noticias">
-  <h1>Noticias</h1>
+  <div class="container mx-auto">
+    <div class="my-10">
+      <TextTitle />
+    </div>
 
-  {
-    blogPosts.map((blog) => {
-      return <p>{blog.title}</p>;
-    })
-  }
+    <h2 class="text-4xl text-lnsf-blue font-extrabold mb-10">Noticias</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        blogPosts.map((blog) => {
+          return (
+            <SingleNews
+              title={blog.title}
+              date={blog.dateAndTime}
+              image={blog.featuredImage.url}
+              link={blog.slug}
+              categories={blog.category}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
 </Layout>

@@ -2,9 +2,13 @@
 import Layout from "../../layouts/Layout.astro";
 import type { BlogPost } from "../../models/blogPost";
 import { getAllBlogPosts } from "../../services/getBlogPosts";
+import { formatDate, formatTime } from "../../utils";
+import { marked } from "marked";
+import Footer from "../../components/Footer.astro";
 
 export async function getStaticPaths() {
   const blogPosts = await getAllBlogPosts();
+
   return blogPosts?.map((post) => {
     return {
       params: {
@@ -16,17 +20,43 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props as { post: BlogPost };
+const content = marked(post.content.markdown);
+const imageWidth = 720;
 ---
 
 <Layout title="Liceo Nibaldo | Noticias">
-  <header class="container mx-auto">
-    <div class="flex flex-col gap-2">
-      <img
-        class="rounded-md shodow-md"
-        width={350}
-        src={post.featuredImage.url}
-        alt=""
-      />
-    </div>
-  </header>
+  <div class="container mx-auto lg:max-w-3xl">
+    <header class="my-12">
+      <div class="flex flex-col items-center">
+        <h1 class="text-3xl md:text-5xl font-extrabold">
+          {post.title}
+        </h1>
+        <div class="flex gap-2 justify-center items-center mb-10">
+          <p>{post.category}</p>
+          <p>{formatDate(post.dateAndTime)}</p>
+          <p>{formatTime(post.dateAndTime)}</p>
+        </div>
+
+        <img
+          class="rounded-md shadow-md"
+          width={imageWidth}
+          src={`https://media.graphassets.com/` +
+            `resize=width:${imageWidth}/` +
+            `output=format:webp/` +
+            post.featuredImage.handle}
+          alt=""
+        />
+      </div>
+    </header>
+  </div>
+
+  <div class="container mx-auto lg:max-w-3xl">
+    <article
+      set:html={content}
+      class="prose lg:prose-xl prose-slate prose-headings:text-lnsf-blue prose-headings:text-2xl"
+    />
+  </div>
+  <div class="container mx-auto">
+    <Footer />
+  </div>
 </Layout>

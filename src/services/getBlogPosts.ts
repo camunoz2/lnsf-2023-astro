@@ -18,6 +18,7 @@ const getBlogPost = async (first: number): Promise<BlogPost[]> => {
           featuredImage {
             id
             url
+            handle
           }
           category
         }
