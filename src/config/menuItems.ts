@@ -9,4 +9,8 @@ export const MENU_ITEMS: NavMenu[] = [
     title: "Noticias",
     link: "/noticias",
   },
+  {
+    title: "Material Pedagógico",
+    link: "/material-pedagogico",
+  },
 ];

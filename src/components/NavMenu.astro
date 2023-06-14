@@ -1,10 +1,9 @@
 ---
-import logo from "../images/logo.png";
 import { MENU_ITEMS } from "../config/menuItems";
 import { config } from "../services/getConfig";
-const pathname = Astro.url.pathname;
-const pathnameFirstSegment = pathname.split("/")[1];
 import { getLinkUrlFirstSegment } from "../utils";
+
+const pathnameFirstSegment = Astro.url.pathname.split("/")[1];
 ---
 
 <div class="container mx-auto px-4 py-6">
@@ -12,7 +11,7 @@ import { getLinkUrlFirstSegment } from "../utils";
     class="flex gap-2 md:hidden border border-slate-50 rounded-md px-2 py-3 items-center"
   >
     <a class="mr-5" href="/">
-      <img width={35} height={35} src={logo} alt="logo lnsf" />
+      <img width={35} height={35} src="/logo.png" alt="logo lnsf" />
     </a>
     {
       MENU_ITEMS.map((item) => {
@@ -34,7 +33,7 @@ import { getLinkUrlFirstSegment } from "../utils";
   <div class="hidden md:flex justify-between items-center">
     <div class="flex gap-4 items-center">
       <a href="/">
-        <img width={65} height={66} src={logo} alt="logo lnsf" />
+        <img width={65} height={66} src="/logo.png" alt="logo lnsf" />
       </a>
       <div class="flex flex-col">
         <a href="/">
