@@ -7,8 +7,8 @@ interface Props {
 const {link, name} = Astro.props
 ---
 
-<div class="py-10 px-8 border border-gray-200 rounded-md bg-white shadow flex justify-between">
-  <h3 class="text-3xl font-light text-slate-500">{name}</h3>
+<div class="py-10 px-8 border border-gray-200 rounded-md bg-white shadow flex justify-between flex-wrap">
+  <h3 class="text-3xl font-light text-slate-500 mb-3 md:mb-0">{name}</h3>
   <a
     href={link}
     class="px-4 py-2 border border-gray-200 rounded-md text-slate-500 hover:bg-slate-500 hover:text-white"
