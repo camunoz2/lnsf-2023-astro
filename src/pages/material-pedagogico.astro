@@ -1,9 +1,49 @@
 ---
+import Footer from "../components/Footer.astro";
 import ResourceBadge from "../components/ResourceBadge.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import TextTitle from "../components/TextTitle.astro";
 import UnderlineText from "../components/UnderlineText.astro";
 import Layout from "../layouts/Layout.astro";
+
+const material = [
+  {
+    name: "Rúbrica de ejecuciones educación física",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+ejecuciones+educacion+fisica.docx",
+  },
+  {
+    name: "Rúbrica Infografía",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+infograf%C3%ADa.docx",
+  },
+  {
+    name: "Rúbrica trabajos prácticos individuales",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+para+trabajos+practicos+individuales.docx",
+  },
+  {
+    name: "Rúbrica para trabajos prácticos maqueta",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+para+trabajos+practicos+grupales+maqueta.docx",
+  },
+  {
+    name: "Rúbrica para informes escritos",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+para+informes+escritos.docx",
+  },
+  {
+    name: "Rúbrica para exposiciones orales",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+para+exposiciones+orales.docx",
+  },
+  {
+    name: "Rúbrica para evaluación valórica",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/Rubrica+para+evaluaci%C3%B3n+val%C3%B3rica.docx",
+  },
+  {
+    name: "Modelo de prueba",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/Modelo+de+Prueba.docx",
+  },
+  {
+    name: "Membrete Word Guías",
+    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/Membrete+Word+Guias.docx",
+  },
+];
 ---
 
 <Layout title="Material Pedagógico">
@@ -13,7 +53,7 @@ import Layout from "../layouts/Layout.astro";
         overTitle="Nuestro"
         title="Material "
         gradientText="pedagógico"
-        description="En este sección puedes descargar una selección de nuestro material pedagógico... pronto"
+        description="Sigue bajando para descargar una selección de nuestro material pedagógico."
       />
     </div>
   </header>
@@ -28,8 +68,12 @@ import Layout from "../layouts/Layout.astro";
         Descarga las rúbricas para distintos tipos de actividades
       </p>
     </div>
-    <div class="py-12">
-      <ResourceBadge  />
+    <div class="py-12 grid grid-cols-1 gap-4">
+      {material.map((m) => <ResourceBadge link={m.link} name={m.name} />)}
     </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-12">
+    <Footer />
   </div>
 </Layout>
