@@ -2,33 +2,39 @@
 import { MENU_ITEMS } from "../config/menuItems";
 import { config } from "../services/getConfig";
 import { getLinkUrlFirstSegment } from "../utils";
+import StudentLink from "./StudentLink.astro";
 
 const pathnameFirstSegment = Astro.url.pathname.split("/")[1];
 ---
 
 <div class="container mx-auto px-4 py-6">
-  <div
-    class="flex gap-2 md:hidden border border-slate-50 rounded-md px-2 py-3 items-center"
-  >
-    <a class="mr-5" href="/">
-      <img width={35} height={35} src="/logo.png" alt="logo lnsf" />
-    </a>
-    {
-      MENU_ITEMS.map((item) => {
-        return (
-          <a
-            class={
-              pathnameFirstSegment === getLinkUrlFirstSegment(item.link)
-                ? "text-lnsf-blue font-bold cursor-pointer"
-                : "cursor-pointer hover:text-lnsf-blue"
-            }
-            href={item.link}
-          >
-            {item.title}
-          </a>
-        );
-      })
-    }
+  <div class="flex flex-col gap-2">
+    <div
+      class="flex gap-2 md:hidden border border-slate-50 rounded-md px-2 py-3 items-center"
+    >
+      <a class="mr-5" href="/">
+        <img width={35} height={35} src="/logo.png" alt="logo lnsf" />
+      </a>
+      {
+        MENU_ITEMS.map((item) => {
+          return (
+            <a
+              class={
+                pathnameFirstSegment === getLinkUrlFirstSegment(item.link)
+                  ? "text-lnsf-blue font-bold cursor-pointer"
+                  : "cursor-pointer hover:text-lnsf-blue"
+              }
+              href={item.link}
+            >
+              {item.title}
+            </a>
+          );
+        })
+      }
+    </div>
+    <div class="block md:hidden">
+      <StudentLink />
+    </div>
   </div>
   <div class="hidden md:flex justify-between items-center">
     <div class="flex gap-4 items-center">
@@ -60,14 +66,7 @@ const pathnameFirstSegment = Astro.url.pathname.split("/")[1];
             );
           })
         }
-        <li>
-          <a
-            class="px-4 py-2 rounded bg-lnsf-blue text-white hover:bg-lnsf-yellow hover:text-lnsf-blue transition-all hover:font-bold"
-            href="https://lms.lirmi.com"
-          >
-            Estudiantes</a
-          >
-        </li>
+        <StudentLink />
         <li>
           <a href={config.instagram}>
             <img width={23} src="/igLogo.svg" alt="instagram logo" />
