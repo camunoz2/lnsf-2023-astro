@@ -7,11 +7,10 @@ import { getAllBlogPosts } from "../../services/getBlogPosts";
 
 export async function getStaticPaths({ paginate }) {
   const blogPosts = await getAllBlogPosts();
-  return paginate(blogPosts, {pageSize: 5})
+  return paginate(blogPosts, { pageSize: 5 });
 }
 
-const {page} = Astro.props
-
+const { page } = Astro.props;
 ---
 
 <Layout title="Noticias">
@@ -42,10 +41,21 @@ const {page} = Astro.props
       }
     </div>
     <div class="flex items-center justify-center gap-4 py-4">
-      {page.url.prev ? <a class="underline" href={page.url.prev}>Anterior</a> : null}
-      {page.url.next ? <a class="underline" href={page.url.next}>Siguiente</a> : null}
+      {
+        page.url.prev ? (
+          <a class="underline" href={page.url.prev}>
+            Anterior
+          </a>
+        ) : null
+      }
+      {
+        page.url.next ? (
+          <a class="underline" href={page.url.next}>
+            Siguiente
+          </a>
+        ) : null
+      }
     </div>
     <Footer />
   </div>
-
 </Layout>

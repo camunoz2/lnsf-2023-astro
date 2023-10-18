@@ -14,3 +14,6 @@ export const MENU_ITEMS: NavMenu[] = [
     link: "/material-pedagogico",
   },
 ];
+
+export const LIRMI_URL = "https://lms.lirmi.com/login";
+export const REGLAMENTO_URL = "https://luminous-torte-9f6cc5.netlify.app/";
