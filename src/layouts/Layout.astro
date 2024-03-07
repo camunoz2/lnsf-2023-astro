@@ -1,5 +1,6 @@
 ---
 import NavMenu from "../components/NavMenu.astro";
+import TopMessage from "../components/TopMessage.astro";
 
 export interface Props {
   title: string;
@@ -28,7 +29,7 @@ const { title } = Astro.props;
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFNZL96"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-    
+    <TopMessage />
     <NavMenu />
     <slot />
   </body>
