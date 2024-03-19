@@ -24,7 +24,7 @@ const content = marked(post.content.markdown);
 const imageWidth = 720;
 ---
 
-<Layout title={post.title}>
+<Layout title={post.title} ogImage={post.featuredImage.url}>
   <div class="container mx-auto px-4 lg:max-w-3xl">
     <header class="my-12">
       <div class="flex flex-col items-center">
