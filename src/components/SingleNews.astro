@@ -11,15 +11,16 @@ interface Props {
 const { title, date, image, link, categories } = Astro.props;
 ---
 
-<div class="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow">
+<a
+  href={`/noticias/${link}`}
+  class="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow"
+>
   <img src={image} class="aspect-video w-full object-cover" alt="" />
   <div class="p-4">
     <p class="mb-1 text-sm text-primary-500">
       LNSF • <time>{formatDate(date)}</time>
     </p>
-    <a href={`/noticias/${link}`} class="text-xl font-medium text-gray-900"
-      >{title}</a
-    >
+    <p class="text-xl font-medium text-gray-900">{title}</p>
     <div class="mt-4 flex gap-2">
       {
         categories.map((cat) => (
@@ -30,4 +31,4 @@ const { title, date, image, link, categories } = Astro.props;
       }
     </div>
   </div>
-</div>
+</a>
