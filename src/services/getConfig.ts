@@ -1,27 +1,27 @@
-import type { Config } from "../models/config";
+import { gql } from "graphql-request";
+import type { Config } from "../gql/graphql";
+import { client } from "./graphqlClient";
 
-const query = {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    query: `
-        {
-          config(where: {id: "cle00dunc3ikr0bkm271oym1e"}) {
-            id
-            schoolName
-            phone
-            address
-            workingHours
-            institutionalSeals
-            instagram
-            facebook
-          }
-        }`,
-  }),
+const QUERY = gql`
+  config(where: { id: "cle00dunc3ikr0bkm271oym1e" }) {
+    id
+    schoolName
+    phone
+    address
+    workingHours
+    institutionSeals {
+      id
+      name
+      description
+    }
+    instagram
+    facebook
+  }
+`;
+
+const getConfig = async (): Promise<Config> => {
+  const response = await client.request(QUERY);
+  return response.config;
 };
 
-const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, query);
-const json = await response.json();
-const config: Config = json.data.config;
-
-export { config };
+export { getConfig };

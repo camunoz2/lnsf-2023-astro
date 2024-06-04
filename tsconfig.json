@@ -1,4 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "types": ["astro/env"]
+  "compilerOptions": {
+    "outDir": "dist"
+  }
 }
