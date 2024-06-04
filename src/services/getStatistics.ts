@@ -3,11 +3,13 @@ import type { Statistic } from "../gql/graphql";
 import { client } from "./graphqlClient";
 
 const QUERY = gql`
-    statistics {
-      id
-      statName
-      statQuantity
-    }
+{
+  statistics {
+    id
+    statName
+    statQuantity
+  }
+}
 `;
 
 const getStatistics = async (): Promise<Statistic[]> => {

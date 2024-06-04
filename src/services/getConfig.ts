@@ -3,7 +3,8 @@ import type { Config } from "../gql/graphql";
 import { client } from "./graphqlClient";
 
 const QUERY = gql`
-  config(where: { id: "cle00dunc3ikr0bkm271oym1e" }) {
+{
+  config(where: {id: "cle00dunc3ikr0bkm271oym1e"}) {
     id
     schoolName
     phone
@@ -17,6 +18,8 @@ const QUERY = gql`
     instagram
     facebook
   }
+}
+
 `;
 
 const getConfig = async (): Promise<Config> => {
