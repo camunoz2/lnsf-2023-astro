@@ -1,6 +1,6 @@
 ---
 import { LIRMI_URL, MENU_ITEMS, REGLAMENTO_URL } from "../config/menuItems";
-import { config } from "../services/getConfig";
+import { getConfig } from "../services/getConfig";
 import { getLinkUrlFirstSegment } from "../utils";
 import Logo from "./Logo.astro";
 import NavButton from "./NavButton.astro";
@@ -8,6 +8,8 @@ import NavButton from "./NavButton.astro";
 interface Props {
   pathName: string;
 }
+
+const config = await getConfig();
 
 const { pathName } = Astro.props;
 ---

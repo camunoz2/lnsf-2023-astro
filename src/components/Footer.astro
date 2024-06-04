@@ -3,10 +3,11 @@ import { MENU_ITEMS } from "../config/menuItems";
 import FooterArticle from "./FooterArticle.astro";
 import FooterTitle from "./FooterTitle.astro";
 import Info from "./Info.astro";
-import { config } from "../services/getConfig";
-import { getBlogPost } from "../services/getBlogPosts";
+import { getConfig } from "../services/getConfig";
+import { getBlogPosts } from "../services/getBlogPosts";
 
-const blogPost = await getBlogPost(2);
+const config = await getConfig();
+const blogPost = await getBlogPosts(2);
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-4 mt-24">
@@ -42,14 +43,7 @@ const blogPost = await getBlogPost(2);
     <FooterTitle>Noticias</FooterTitle>
     {
       blogPost.map((post) => {
-        return (
-          <FooterArticle
-            title={post.title}
-            dateAndTime={post.dateAndTime}
-            image={post.featuredImage}
-            link={post.slug}
-          />
-        );
+        return <FooterArticle content={post} />;
       })
     }
   </div>

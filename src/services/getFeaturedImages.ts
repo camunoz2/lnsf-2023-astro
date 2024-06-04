@@ -1,28 +1,23 @@
-import type { BlogPost } from "../models/blogPost";
+import { gql } from "graphql-request";
+import { client } from "./graphqlClient";
 
-const getFeaturedImages = async (
+const QUERY = gql`
+  query GetFeaturedImage($id: ID!, $imageHeight: Int!, $imageWidth: Int!) {
+    blogEntry(where: { id: $id }) {
+      featuredImage {
+        url(transformation: { image: { resize: { height: $imageHeight, width: $imageWidth } } })
+      }
+    }
+  }
+`;
+
+const getFeaturedImage = async (
   id: string,
   imageHeight: number,
   imageWidth: number
-): Promise<BlogPost[]> => {
-  const query = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      query: `
-      {
-        blogEntry(where: {id: ${id}}) {
-          featuredImage {
-            url(transformation: {image: {resize: {height: ${imageHeight}, width: ${imageWidth}}}})
-          }
-        }
-      }
-      `,
-    }),
-  };
-  const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, query);
-  const json = await response.json();
-  return json.data.blogEntry;
+): Promise<string | null> => {
+  const response = await client.request(QUERY, { id, imageHeight, imageWidth });
+  return response.blogEntry?.featuredImage?.url ?? null;
 };
 
-export { getFeaturedImages };
+export { getFeaturedImage };

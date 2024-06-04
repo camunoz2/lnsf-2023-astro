@@ -1,15 +1,16 @@
 ---
+import type { InstitutionSeal } from "../gql/graphql";
+
 interface Props {
-  title: string;
-  body: string;
+  content: InstitutionSeal;
 }
 
-const { title, body } = Astro.props;
+const { content } = Astro.props;
 ---
 
 <div
   class="rounded-md flex flex-col gap-4 py-8 items-center justify-center border-2 border-lnsf-light px-8"
 >
-  <h2 class="text-3xl text-lnsf-blue font-black">{title}</h2>
-  <p class="text-lg">{body}</p>
+  <h2 class="text-3xl text-lnsf-blue font-black">{content.name}</h2>
+  <p class="text-lg">{content.description}</p>
 </div>
