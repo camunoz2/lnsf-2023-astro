@@ -9,44 +9,41 @@ import Layout from "../layouts/Layout.astro";
 const material = [
   {
     name: "Rúbrica de ejecuciones educación física",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+ejecuciones+educacion+fisica.docx",
+    link: "https://docs.google.com/document/d/12GjUeaR9s7TG6NYQpollZdtTC55mywM8/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
   {
     name: "Rúbrica Infografía",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+infograf%C3%ADa.docx",
+    link: "https://docs.google.com/document/d/1C6PZQcrgUvkpZbZhe8HwlPm0wnddhWDC/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
   {
     name: "Rúbrica trabajos prácticos individuales",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+para+trabajos+practicos+individuales.docx",
+    link: "https://docs.google.com/document/d/1ykyLn3DJQ_2qQfsOObaIaVUkU09cIjeP/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
   {
     name: "Rúbrica para trabajos prácticos maqueta",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+para+trabajos+practicos+grupales+maqueta.docx",
+    link: "https://docs.google.com/document/d/1Tqs0iZt16U66g-UfJkPdYmF5L_IWPwvl/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
   {
     name: "Rúbrica para informes escritos",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+para+informes+escritos.docx",
+    link: "https://docs.google.com/document/d/1pHStvzMO9RLwHJEh1Ux8glehU0OFXyG0/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
   {
     name: "Rúbrica para exposiciones orales",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/R%C3%BAbrica+para+exposiciones+orales.docx",
+    link: "https://docs.google.com/document/d/15d6js2wIYSZCwc5r13GbJbqORdTT6ww8/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
   {
     name: "Rúbrica para evaluación valórica",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/Rubrica+para+evaluaci%C3%B3n+val%C3%B3rica.docx",
+    link: "https://docs.google.com/document/d/1eQtlCUQ50Y-WXXZpashmmk83EzggzJJR/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
   {
     name: "Modelo de prueba",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/Modelo+de+Prueba.docx",
+    link: "https://docs.google.com/document/d/1Nj5G_rkxp2QmxcZJ7ZjYTywGLD-mf-LN/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
   {
     name: "Membrete Word Guías",
-    link: "https://arjeldev-projects.s3.sa-east-1.amazonaws.com/lnsf-rubricas/Membrete+Word+Guias.docx",
+    link: "https://docs.google.com/document/d/1P34yISDVZ9J_04Jvy1ROS6W6tWo_DldD/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
   },
 ];
-
-
-
 ---
 
 <Layout title="Material Pedagógico">
@@ -67,14 +64,17 @@ const material = [
         Planes
         <UnderlineText>Normativos</UnderlineText>
       </SectionTitle>
-      <p class="text-center my-6 text-lg">Nuestros planes normativos están integrados con nuestro PME y le dan forma a nuestro PEI.</p>
+      <p class="text-center my-6 text-lg">
+        Nuestros planes normativos están integrados con nuestro PME y le dan
+        forma a nuestro PEI.
+      </p>
     </div>
     <div class="py-12 grid grid-cols-1 gap-4">
       {material.map((m) => <ResourceBadge link={m.link} name={m.name} />)}
     </div>
   </div>
 
-<div class="container mx-auto px-4 py-24">
+  <div class="container mx-auto px-4 py-24">
     <div class="py-12">
       <SectionTitle>
         Rúbricas
