@@ -9,39 +9,48 @@ import Layout from "../layouts/Layout.astro";
 const material = [
   {
     name: "Rúbrica Infografía",
-    link: "https://docs.google.com/document/d/12tap3tER8kmBzH1B8Izm2PBbTv2D64F9/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/12tap3tER8kmBzH1B8Izm2PBbTv2D64F9/export?format=docx",
+    download: true,
   },
   {
     name: "Rúbrica trabajos prácticos individuales",
-    link: "https://docs.google.com/document/d/1GT1MmWJNuV_ua35q4hjlV2X9pKbS19Wm/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/1GT1MmWJNuV_ua35q4hjlV2X9pKbS19Wm/export?format=docx",
+    download: true,
   },
   {
     name: "Rúbrica para trabajos prácticos maqueta",
-    link: "https://docs.google.com/document/d/1aQ7OV4XEZ4oW9bZO7G4nB_PAuCwVQElE/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/1aQ7OV4XEZ4oW9bZO7G4nB_PAuCwVQElE/export?format=docx",
+    download: true,
   },
   {
     name: "Rúbrica para informes escritos",
-    link: "https://docs.google.com/document/d/1RRZW-FxYr_-weUSOvyeBsWp-Xl_koZRI/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/1RRZW-FxYr_-weUSOvyeBsWp-Xl_koZRI/export?format=docx",
+    download: true,
   },
   {
     name: "Rúbrica para exposiciones orales",
-    link: "https://docs.google.com/document/d/11m-N4oM_n7dvnOPyuvquMfK-gdSN1iAS/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/11m-N4oM_n7dvnOPyuvquMfK-gdSN1iAS/export?format=docx",
+    download: true,
   },
   {
     name: "Rúbrica para evaluación valórica",
-    link: "https://docs.google.com/document/d/1M-c-ngdiNy_zPsF_2DlPMFZONHLS2WQA/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/1M-c-ngdiNy_zPsF_2DlPMFZONHLS2WQA/export?format=docx",
+    download: true,
   },
   {
     name: "Modelo de prueba",
-    link: "https://docs.google.com/document/d/1WH5HGWE5wgdVpLV-cZmNUa2lK4JdUIcd/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/1WH5HGWE5wgdVpLV-cZmNUa2lK4JdUIcd/export?format=docx",
+    download: true,
   },
   {
     name: "Lista de Cotejo Laboratorio",
-    link: "https://docs.google.com/document/d/1lTGVEOZO7m1Va6Q5vBIXdS7DbMoM2w_Z/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/1lTGVEOZO7m1Va6Q5vBIXdS7DbMoM2w_Z/export?format=docx",
+    download: true,
   },
   {
     name: "Membrete Word Guías",
-    link: "https://docs.google.com/document/d/1AaqVll5R8ZcfeOlN_jOaol373pMOEQ7F/edit?usp=drive_link&ouid=111282711492614240440&rtpof=true&sd=true",
+    link: "https://docs.google.com/document/d/1AaqVll5R8ZcfeOlN_jOaol373pMOEQ7F/export?format=docx",
+    download: true,
   },
 ];
 ---
@@ -69,7 +78,11 @@ const material = [
       </p>
     </div>
     <div class="py-12 grid grid-cols-1 gap-4">
-      {material.map((m) => <ResourceBadge link={m.link} name={m.name} />)}
+      {
+        material.map((m) => (
+          <ResourceBadge link={m.link} name={m.name} download={m.download} />
+        ))
+      }
     </div>
   </div>
 
