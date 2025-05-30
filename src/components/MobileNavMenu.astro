@@ -18,10 +18,11 @@ const { pathName } = Astro.props;
     <Logo size={35} />
     {
       MENU_ITEMS.map((item) => {
+        const firstSegment = getLinkUrlFirstSegment(item.link);
         return (
           <a
             class={
-              pathName === getLinkUrlFirstSegment(item.link)
+              firstSegment !== null && pathName === firstSegment
                 ? "text-lnsf-blue font-bold cursor-pointer"
                 : "cursor-pointer hover:text-lnsf-blue"
             }

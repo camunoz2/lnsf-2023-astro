@@ -29,10 +29,11 @@ const { pathName } = Astro.props;
     <ul class="flex gap-2 text-gray-400">
       {
         MENU_ITEMS.map((item) => {
+          const firstSegment = getLinkUrlFirstSegment(item.link);
           return (
             <li
               class={
-                pathName === getLinkUrlFirstSegment(item.link)
+                firstSegment !== null && pathName === firstSegment
                   ? "text-lnsf-blue font-bold cursor-pointer"
                   : "cursor-pointer hover:text-lnsf-blue"
               }

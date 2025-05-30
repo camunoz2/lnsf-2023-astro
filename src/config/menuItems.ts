@@ -13,6 +13,10 @@ export const MENU_ITEMS: NavMenu[] = [
     title: "Material Pedagógico",
     link: "/material-pedagogico",
   },
+  {
+    title: "Ranking Lecturas",
+    link: "https://lecturaslbnsf.netlify.app/",
+  },
 ];
 
 export const LIRMI_URL = "https://lms.lirmi.com/login";
