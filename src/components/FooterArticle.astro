@@ -1,20 +1,24 @@
 ---
 import type { BlogEntry } from "../gql/graphql";
 import { formatDate } from "../utils";
+import { optimizeImageForThumbnail } from "../utils/imageOptimization";
 
 interface Props {
   content: BlogEntry;
 }
 
 const { content } = Astro.props;
+
+// Optimizar la imagen para thumbnail pequeño
+const optimizedImage = optimizeImageForThumbnail(content.featuredImage.url, 112, 80);
 ---
 
 <a href={`/noticias/${content.slug}`} class="flex gap-2">
   <div class="rounded-md bg-lnsf-light-text w-28 h-20 overflow-hidden">
     <img
       class="object-cover w-full h-full"
-      src={content.featuredImage.url}
-      alt=""
+      src={optimizedImage}
+      alt={content.title}
     />
   </div>
   <div class="flex flex-col justify-center">

@@ -1,5 +1,6 @@
 ---
 import { formatDate, formatTime } from "../utils";
+import { optimizeImageForThumbnail } from "../utils/imageOptimization";
 import ShowDate from "./ShowDate.astro";
 import ShowTime from "./ShowTime.astro";
 
@@ -8,20 +9,33 @@ interface Props {
   category: string[];
   dateTime: string;
   link: string;
+  featuredImage: string;
 }
 
-const { title, category, dateTime, link } = Astro.props;
+const { title, category, dateTime, link, featuredImage } = Astro.props;
+
+// Optimizar la imagen para thumbnail
+const optimizedImage = optimizeImageForThumbnail(featuredImage, 400, 128);
 ---
 
 <div
-  class="border-2 border-lnsf-light rounded-md px-8 py-6 flex flex-col gap-4 shadow-lnsf h-60 bg-white"
+  class="border-2 border-lnsf-light rounded-md px-8 py-6 flex flex-col gap-4 shadow-lnsf bg-white"
 >
   <div class="flex justify-between">
     <ShowDate date={formatDate(dateTime)} />
     <ShowTime time={formatTime(dateTime)} />
   </div>
   <h3 class="text-3xl md:text-4xl">{title}</h3>
-  <div class="flex justify-between">
+  {featuredImage && (
+    <div class="mt-2">
+      <img 
+        src={optimizedImage} 
+        alt={title}
+        class="w-full h-32 object-cover rounded-md"
+      />
+    </div>
+  )}
+  <div class="flex justify-between mt-auto">
     <div class="flex gap-2 items-center">
       {
         category.map((c) => {

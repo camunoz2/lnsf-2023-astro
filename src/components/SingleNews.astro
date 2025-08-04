@@ -1,5 +1,6 @@
 ---
 import { formatDate } from "../utils";
+import { optimizeImageForThumbnail } from "../utils/imageOptimization";
 interface Props {
   title: string;
   image: string;
@@ -9,13 +10,16 @@ interface Props {
 }
 
 const { title, date, image, link, categories } = Astro.props;
+
+// Optimizar la imagen para thumbnail
+const optimizedImage = optimizeImageForThumbnail(image, 400, 225);
 ---
 
 <a
   href={`/noticias/${link}`}
   class="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow"
 >
-  <img src={image} class="aspect-video w-full object-cover" alt="" />
+  <img src={optimizedImage} class="aspect-video w-full object-cover" alt={title} />
   <div class="p-4">
     <p class="mb-1 text-sm text-primary-500">
       LNSF • <time>{formatDate(date)}</time>

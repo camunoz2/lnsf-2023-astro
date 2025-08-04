@@ -1,6 +1,7 @@
 ---
 import EventCard from "./EventCard.astro";
 import { getBlogPosts } from "../services/getBlogPosts";
+import { optimizeImageForThumbnail } from "../utils/imageOptimization";
 
 const MAX_POSTS = 3;
 const blogPosts = await getBlogPosts(MAX_POSTS);
@@ -11,6 +12,9 @@ const blogPosts = await getBlogPosts(MAX_POSTS);
 <div class="grid grid-cols-1 gap-2 translate-x-0 lg:-translate-x-44">
   {
     blogPosts.map((post, index) => {
+      // Optimizar la imagen para thumbnail
+      const optimizedImage = optimizeImageForThumbnail(post.featuredImage.url, 400, 128);
+      
       return (
         <div class={index === 1 ? "translate-x-0 lg:-translate-x-14" : ""}>
           <EventCard
@@ -18,6 +22,7 @@ const blogPosts = await getBlogPosts(MAX_POSTS);
             category={post.category}
             dateTime={post.dateAndTime}
             link={post.slug}
+            featuredImage={optimizedImage}
           />
         </div>
       );
