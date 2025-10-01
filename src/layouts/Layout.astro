@@ -10,14 +10,14 @@ export interface Props {
 const { title, ogImage } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <script type="text/partytown">
+    <script type="text/partytown" is:inline>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -29,7 +29,7 @@ const { title, ogImage } = Astro.props;
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-PFNZL96");
     </script>
-    <script type="text/partytown">
+    <script type="text/partytown" is:inline>
       !(function (t, e) {
         var o, n, p, r;
         e.__SV ||
@@ -86,23 +86,37 @@ const { title, ogImage } = Astro.props;
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={`Liceo Nibaldo Sepúlveda Fernández | ${title}`} />
-    <meta property="og:description" content="Ofrecemos una educación de calidad y un ambiente de aprendizaje inclusivo y estimulante" />
-    {ogImage && (
-      <>
-        <meta property="og:image" content={ogImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:alt" content={title} />
-      </>
-    )}
+    <meta
+      property="og:title"
+      content={`Liceo Nibaldo Sepúlveda Fernández | ${title}`}
+    />
+    <meta
+      property="og:description"
+      content="Ofrecemos una educación de calidad y un ambiente de aprendizaje inclusivo y estimulante"
+    />
+    {
+      ogImage && (
+        <>
+          <meta property="og:image" content={ogImage} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:alt" content={title} />
+        </>
+      )
+    }
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={`Liceo Nibaldo Sepúlveda Fernández | ${title}`} />
-    <meta property="twitter:description" content="Ofrecemos una educación de calidad y un ambiente de aprendizaje inclusivo y estimulante" />
+    <meta
+      property="twitter:title"
+      content={`Liceo Nibaldo Sepúlveda Fernández | ${title}`}
+    />
+    <meta
+      property="twitter:description"
+      content="Ofrecemos una educación de calidad y un ambiente de aprendizaje inclusivo y estimulante"
+    />
     {ogImage && <meta property="twitter:image" content={ogImage} />}
 
     <title>Liceo Nibaldo Sepúlveda Fernández | {title}</title>

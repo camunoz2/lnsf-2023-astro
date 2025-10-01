@@ -9,9 +9,12 @@ import NewsCalendar from "../components/NewsCalendar.astro";
 import Footer from "../components/Footer.astro";
 import { getStatistics } from "../services/getStatistics";
 import { getConfig } from "../services/getConfig";
+import { getBlogPosts } from "../services/getBlogPosts";
+import NewsSlider from "../components/NewsSlider.tsx";
 
 const stats = await getStatistics();
 const websiteConfig = await getConfig();
+const news = await getBlogPosts(5);
 ---
 
 <Layout title="Inicio" ogImage="/header_img.jpg">

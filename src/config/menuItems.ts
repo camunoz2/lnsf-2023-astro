@@ -21,6 +21,10 @@ export const MENU_ITEMS: NavMenu[] = [
     title: "Nibaldo en 100",
     link: "https://nibaldoen100.netlify.app/",
   },
+  {
+    title: "Contacto",
+    link: "/contacto",
+  },
 ];
 
 export const LIRMI_URL = "https://lms.lirmi.com/login";

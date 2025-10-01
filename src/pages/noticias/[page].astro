@@ -5,13 +5,31 @@ import TextTitle from "../../components/TextTitle.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getAllBlogPosts } from "../../services/getBlogPosts";
 import { optimizeImageForThumbnail } from "../../utils/imageOptimization";
+import NewsSlider from "../../components/NewsSlider.tsx";
 
-export async function getStaticPaths({ paginate }) {
+type BlogType = {
+  title: string;
+  dateAndTime: string;
+  featuredImage: { url: string };
+  slug: string;
+  category: string[];
+};
+
+type PageType = {
+  data: BlogType[];
+  url: { prev?: string; next?: string };
+};
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: (items: any[], opts: { pageSize: number }) => any;
+}) {
   const blogPosts = await getAllBlogPosts();
   return paginate(blogPosts, { pageSize: 5 });
 }
 
-const { page } = Astro.props;
+const { page }: { page: PageType } = Astro.props;
 ---
 
 <Layout title="Noticias" ogImage="/header_img.jpg">
@@ -30,8 +48,12 @@ const { page } = Astro.props;
       {
         page.data.map((blog) => {
           // Optimizar la imagen para thumbnail
-          const optimizedImage = optimizeImageForThumbnail(blog.featuredImage.url, 400, 225);
-          
+          const optimizedImage = optimizeImageForThumbnail(
+            blog.featuredImage.url,
+            400,
+            225
+          );
+
           return (
             <SingleNews
               title={blog.title}

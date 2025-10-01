@@ -1,41 +1,6 @@
 ---
-import { LIRMI_URL, MENU_ITEMS, REGLAMENTO_URL } from "../config/menuItems";
-import { getLinkUrlFirstSegment } from "../utils";
-import Logo from "./Logo.astro";
-import NavButton from "./NavButton.astro";
-
-interface Props {
-  pathName: string;
-}
-
+import MobileNavMenuReact from "./MobileNavMenuReact.jsx";
 const { pathName } = Astro.props;
 ---
 
-<div class="flex flex-col gap-2">
-  <div
-    class="flex gap-2 md:hidden border border-slate-50 rounded-md px-2 py-3 items-center"
-  >
-    <Logo size={35} />
-    {
-      MENU_ITEMS.map((item) => {
-        const firstSegment = getLinkUrlFirstSegment(item.link);
-        return (
-          <a
-            class={
-              firstSegment !== null && pathName === firstSegment
-                ? "text-lnsf-blue font-bold cursor-pointer"
-                : "cursor-pointer hover:text-lnsf-blue"
-            }
-            href={item.link}
-          >
-            {item.title}
-          </a>
-        );
-      })
-    }
-  </div>
-  <div class="flex gap-2 md:hidden">
-    <NavButton text="Estudiantes" link={LIRMI_URL} />
-    <NavButton text="Reglamento" link={REGLAMENTO_URL} />
-  </div>
-</div>
+<MobileNavMenuReact client:load pathName={pathName} />
