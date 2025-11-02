@@ -1,88 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TextTitle from "../components/TextTitle.astro";
-import StatIndicator from "../components/StatIndicator.astro";
-import SectionTitle from "../components/SectionTitle.astro";
-import UnderlineText from "../components/UnderlineText.astro";
-import TextCard from "../components/TextCard.astro";
-import NewsCalendar from "../components/NewsCalendar.astro";
-import Footer from "../components/Footer.astro";
-import { getStatistics } from "../services/getStatistics";
-import { getConfig } from "../services/getConfig";
-import { getBlogPosts } from "../services/getBlogPosts";
-import NewsSlider from "../components/NewsSlider.tsx";
-
-const stats = await getStatistics();
-const websiteConfig = await getConfig();
-const news = await getBlogPosts(5);
 ---
 
-<Layout title="Inicio" ogImage="/header_img.jpg">
-  <header class="container mx-auto px-4 pt-12 md:pt-0 pb-20">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <TextTitle
-        overTitle="Formando"
-        title="Líderes del "
-        gradientText="futuro"
-        description="Ofrecemos una educación de calidad y un ambiente de aprendizaje inclusivo y estimulante"
-      />
-      <img class="hidden md:block" src="/header_img.jpg" alt="" />
-    </div>
-  </header>
-
-  <div class="bg-lnsf-blue py-6 md:py-14">
-    <div class="container mx-auto px-4">
-      <div
-        class="grid grid-cols-1 divide-y md:divide-y-0 md:divide-x divide-white/25 md:grid-cols-2 lg:grid-cols-4 items-center justify-center"
-      >
-        {
-          stats.map((stat) => {
-            return (
-              <StatIndicator number={stat.statQuantity} text={stat.statName} />
-            );
-          })
-        }
-      </div>
-    </div>
-  </div>
-
-  <div class="container mx-auto px-4 py-24">
-    <div class="py-12">
-      <SectionTitle>
-        Bienvenidos al
-        <UnderlineText>Nibaldo</UnderlineText>
-      </SectionTitle>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12">
-      {
-        websiteConfig.institutionSeals.map((seal) => {
-          return <TextCard content={seal} />;
-        })
-      }
-    </div>
-  </div>
-
-  <div class="container mx-auto px-4 py-24">
-    <div class="py-12">
-      <SectionTitle>
-        Calendario de
-        <UnderlineText>Actividades</UnderlineText>
-      </SectionTitle>
-      <p class="text-center my-6 text-lg">
-        ¡No te pierdas ninguna novedad! Revisa nuestro sitio regularmente
-      </p>
-      <div class="grid grid-cols-1 lg:grid-cols-2 py-12">
-        <NewsCalendar />
-      </div>
-    </div>
-  </div>
-
-  <div class="container px-4 mx-auto py-12">
-    <SectionTitle>
-      ¿Qué esperas?
-      <UnderlineText>¡Únete al Nibaldo!</UnderlineText>
-    </SectionTitle>
-    <Footer />
-  </div>
-</Layout>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <title>Astro</title>
+  </head>
+  <body>
+    <Layout title="Inicio">
+      <h1 class="text-3xl font-bold underline">¡Hola, mundo!</h1>
+    </Layout>
+  </body>
+</html>

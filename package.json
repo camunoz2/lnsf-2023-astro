@@ -1,37 +1,16 @@
 {
-  "name": "lnsf_website",
+  "name": "",
   "type": "module",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/partytown": "2.1.0",
-    "@astrojs/react": "^4.3.0",
-    "@astrojs/tailwind": "5.1.0",
-    "@fontsource/inter": "5.0.18",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
-    "astro": "4.9.2",
-    "graphql": "^16.8.1",
-    "graphql-request": "5.1.0",
-    "marked": "12.0.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "tailwindcss": "3.4.3",
-    "typescript": "^5.9.2"
-  },
-  "devDependencies": {
-    "@graphql-codegen/cli": "5.0.2",
-    "@graphql-codegen/client-preset": "4.2.6",
-    "@graphql-typed-document-node/core": "^3.2.0",
-    "@tailwindcss/typography": "0.5.13"
+    "@tailwindcss/vite": "^4.1.16",
+    "astro": "^5.15.3",
+    "tailwindcss": "^4.1.16"
   }
 }

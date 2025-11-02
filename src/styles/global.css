@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lnsf-yellow: #FFD059;
+  --color-lnsf-blue: #0266FF;
+  --color-lnsf-light: #efefef;
+  --color-lnsf-light-text: #7a7a7a;
+}
+
+@utility shadow-lnsf {
+  box-shadow: "0px 27px 41px -14px rgba(2, 102, 255, 0.13)",
+}
