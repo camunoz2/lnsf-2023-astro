@@ -17,18 +17,22 @@ const optimizedImage = optimizeImageForThumbnail(image, 400, 225);
 
 <a
   href={`/noticias/${link}`}
-  class="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow"
+  class="mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow break-words"
 >
-  <img src={optimizedImage} class="aspect-video w-full object-cover" alt={title} />
+  <img
+    src={optimizedImage}
+    class="aspect-video w-full object-cover"
+    alt={title}
+  />
   <div class="p-4">
     <p class="mb-1 text-sm text-primary-500">
       LNSF • <time>{formatDate(date)}</time>
     </p>
-    <p class="text-xl font-medium text-gray-900">{title}</p>
+    <p class="text-xl font-medium text-gray-900 break-words">{title}</p>
     <div class="mt-4 flex gap-2">
       {
         categories.map((cat) => (
-          <span class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600">
+          <span class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600 break-words">
             {cat}
           </span>
         ))
